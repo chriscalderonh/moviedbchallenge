@@ -5,8 +5,10 @@ import com.chriscalderonh.moviedbchallenge.RandomValuesFactory.generateDouble
 import com.chriscalderonh.moviedbchallenge.RandomValuesFactory.generateInt
 import com.chriscalderonh.moviedbchallenge.RandomValuesFactory.generateString
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.data.remote.model.Dates
+import com.chriscalderonh.moviedbchallenge.upcomingmovies.data.remote.model.MovieDetails
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.data.remote.model.Result
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.data.remote.model.UpcomingMovies
+import com.chriscalderonh.moviedbchallenge.upcomingmovies.domain.model.DomainMovieDetails
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.domain.model.DomainResult
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.domain.model.DomainUpcomingMovies
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.model.UiResult
@@ -76,5 +78,42 @@ object UpcomingMoviesFactory {
         generateString(),
         generateString(),
         generateString()
+    )
+
+    fun generateMovieDetails() = MovieDetails(
+        generateBoolean(),
+        generateString(),
+        generateString(),
+        generateInt(),
+        arrayListOf(),
+        generateString(),
+        generateInt(),
+        generateString(),
+        generateString(),
+        generateString(),
+        generateString(),
+        generateDouble(),
+        generateString(),
+        arrayListOf(),
+        arrayListOf(),
+        generateString(),
+        generateInt(),
+        generateInt(),
+        arrayListOf(),
+        generateString(),
+        generateString(),
+        generateString(),
+        generateBoolean(),
+        generateDouble(),
+        generateInt()
+    )
+
+    fun generateDomainMovieDetails() = DomainMovieDetails(
+        generateString(),
+        generateString(),
+        generateString(),
+        generateString(),
+        generateString(),
+        generateInt()
     )
 }
