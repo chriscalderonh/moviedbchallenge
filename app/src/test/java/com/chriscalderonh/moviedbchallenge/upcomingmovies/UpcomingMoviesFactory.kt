@@ -9,6 +9,8 @@ import com.chriscalderonh.moviedbchallenge.upcomingmovies.data.remote.model.Resu
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.data.remote.model.UpcomingMovies
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.domain.model.DomainResult
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.domain.model.DomainUpcomingMovies
+import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.model.UiResult
+import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.model.UiUpcomingMovies
 
 object UpcomingMoviesFactory {
 
@@ -54,6 +56,22 @@ object UpcomingMoviesFactory {
     private fun generateDomainResults() = (0..10).map { generateDomainResult() }
 
     private fun generateDomainResult() = DomainResult(
+        generateInt(),
+        generateString(),
+        generateString(),
+        generateString()
+    )
+
+    fun generateUiUpcomingMovies() = UiUpcomingMovies(
+        generateInt(),
+        generateUiResults(),
+        generateInt(),
+        generateInt()
+    )
+
+    private fun generateUiResults() = (0..10).map { generateUiResult() }
+
+    private fun generateUiResult() = UiResult(
         generateInt(),
         generateString(),
         generateString(),
