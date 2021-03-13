@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">moviedbchallenge</string>
+    <string name="sorry_an_error_occurred">Lo sentimos se produjo un error</string>
+    <string name="s_continue">Continuar</string>
+    <string name="upcoming_movies">Próximos estrenos</string>
+    <string name="movie_poster_description">Poster de la película</string>
 </resources>
