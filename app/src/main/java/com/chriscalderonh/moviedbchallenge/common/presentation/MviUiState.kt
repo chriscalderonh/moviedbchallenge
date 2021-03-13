@@ -1,3 +1,0 @@
-package com.chriscalderonh.moviedbchallenge.common.presentation
-
-interface MviUiState
