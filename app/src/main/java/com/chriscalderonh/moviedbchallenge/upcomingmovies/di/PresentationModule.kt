@@ -6,6 +6,7 @@ import com.chriscalderonh.moviedbchallenge.common.presentation.AppExecutionThrea
 import com.chriscalderonh.moviedbchallenge.common.presentation.ExecutionThread
 import com.chriscalderonh.moviedbchallenge.common.presentation.ViewModelFactory
 import com.chriscalderonh.moviedbchallenge.di.ViewModelKey
+import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.MovieDetailsViewModel
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.UpcomingMoviesViewModel
 import dagger.Binds
 import dagger.Module
@@ -25,4 +26,10 @@ abstract class PresentationModule {
     @ViewModelKey(UpcomingMoviesViewModel::class)
     abstract fun bindUpcomingMoviesViewModel(
         viewModel: UpcomingMoviesViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MovieDetailsViewModel::class)
+    abstract fun bindMovieDetailsViewModel(
+        viewModel: MovieDetailsViewModel): ViewModel
 }

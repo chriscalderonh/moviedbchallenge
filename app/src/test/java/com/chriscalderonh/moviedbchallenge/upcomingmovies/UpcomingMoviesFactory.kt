@@ -11,6 +11,7 @@ import com.chriscalderonh.moviedbchallenge.upcomingmovies.data.remote.model.Upco
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.domain.model.DomainMovieDetails
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.domain.model.DomainResult
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.domain.model.DomainUpcomingMovies
+import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.model.UiMovieDetails
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.model.UiResult
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.model.UiUpcomingMovies
 
@@ -109,6 +110,15 @@ object UpcomingMoviesFactory {
     )
 
     fun generateDomainMovieDetails() = DomainMovieDetails(
+        generateString(),
+        generateString(),
+        generateString(),
+        generateString(),
+        generateString(),
+        generateInt()
+    )
+
+    fun generateUiMovieDetails() = UiMovieDetails(
         generateString(),
         generateString(),
         generateString(),

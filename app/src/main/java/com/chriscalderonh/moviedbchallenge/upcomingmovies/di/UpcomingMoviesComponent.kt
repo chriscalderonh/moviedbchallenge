@@ -2,6 +2,7 @@ package com.chriscalderonh.moviedbchallenge.upcomingmovies.di
 
 import com.chriscalderonh.moviedbchallenge.di.ActivityScope
 import com.chriscalderonh.moviedbchallenge.di.AppComponent
+import com.chriscalderonh.moviedbchallenge.upcomingmovies.ui.MovieDetailsFragment
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.ui.MoviesActivity
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.ui.UpcomingMoviesFragment
 import dagger.Component
@@ -15,4 +16,6 @@ interface  UpcomingMoviesComponent {
     fun inject(moviesActivity: MoviesActivity)
 
     fun inject(upcomingMoviesFragment: UpcomingMoviesFragment)
+
+    fun inject(movieDetailsFragment: MovieDetailsFragment)
 }

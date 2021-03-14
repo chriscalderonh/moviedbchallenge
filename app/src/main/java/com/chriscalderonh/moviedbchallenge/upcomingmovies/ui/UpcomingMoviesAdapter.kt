@@ -3,6 +3,7 @@ package com.chriscalderonh.moviedbchallenge.upcomingmovies.ui
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.chriscalderonh.moviedbchallenge.common.ui.GlideApp
 import com.chriscalderonh.moviedbchallenge.databinding.ViewResultItemBinding
@@ -42,6 +43,10 @@ class UpcomingMoviesAdapter @Inject constructor() :
                 tvReleaseDate.text = item.releaseDate
                 val posterUrl = GLIDE_URL_FOR_SMALL_IMAGES + item.posterPath
                 GlideApp.with(ivPosterArt.context).load(posterUrl).into(ivPosterArt)
+                clItem.setOnClickListener { view ->
+                    val directions = UpcomingMoviesFragmentDirections.actionUpcomingMoviesFragmentToMovieDetailsFragment(item.id.toString())
+                    view.findNavController().navigate(directions)
+                }
             }
         }
     }

@@ -45,6 +45,6 @@ class UpcomingMoviesRemoteImplTest {
     }
 
     private fun stubRestApiGetMovieDetails(apiKey: String, movieId: String, response: Single<MovieDetails>) {
-        whenever(restApi.getMovieDetails(apiKey, movieId)).thenReturn(response)
+        whenever(restApi.getMovieDetails(movieId, apiKey)).thenReturn(response)
     }
 }
