@@ -9,13 +9,13 @@ import retrofit2.http.Query
 
 interface UpcomingMoviesRestApi {
 
-    @GET("movie/upcoming?language=es-CL&sort_by=popularity.desc")
+    @GET("movie/upcoming?language=es&sort_by=popularity.desc")
     fun getUpcomingMoviesList(
         @Query("api_key") apiKey: String,
         @Query("page") page: Int
     ): Single<UpcomingMovies>
 
-    @GET("movie/{movie_id}?language=es-CL")
+    @GET("movie/{movie_id}?language=es")
     fun getMovieDetails(
         @Path("movie_id") movieId: String,
         @Query("api_key") apiKey: String

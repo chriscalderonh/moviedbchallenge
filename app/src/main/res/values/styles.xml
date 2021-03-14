@@ -11,6 +11,12 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="Font_18sp_Primary_Italic">
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
     <style name="Font_18sp_Accent">
         <item name="android:textColor">@color/accent_text</item>
         <item name="android:textSize">18sp</item>

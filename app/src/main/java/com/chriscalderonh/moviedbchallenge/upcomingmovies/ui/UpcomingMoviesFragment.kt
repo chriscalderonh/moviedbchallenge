@@ -17,12 +17,14 @@ import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.model.UiU
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.uistate.UpcomingMoviesUiState
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.uistate.UpcomingMoviesUiState.ErrorGettingMoviesList
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.uistate.UpcomingMoviesUiState.SuccessGettingMoviesList
+import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.uistate.UpcomingMoviesUiState.Default
+import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.uistate.UpcomingMoviesUiState.Loading
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.presentation.userintent.UpcomingMoviesUserIntent
 import com.chriscalderonh.moviedbchallenge.upcomingmovies.ui.Constants.INITIAL_PAGE
 import io.reactivex.Observable
 import javax.inject.Inject
 
-class UpcomingMoviesFragment : Fragment(),
+open class UpcomingMoviesFragment : Fragment(),
     MviUi<UpcomingMoviesUserIntent, UpcomingMoviesUiState> {
 
     lateinit var binding: FragmentUpcomingMoviesBinding
@@ -44,7 +46,7 @@ class UpcomingMoviesFragment : Fragment(),
         subscribeUiStatesAndProcessUserIntents()
     }
 
-    private fun setupInjection() {
+    protected open fun setupInjection() {
         DaggerUpcomingMoviesComponent.builder()
             .build()
             .inject(this)
@@ -62,11 +64,28 @@ class UpcomingMoviesFragment : Fragment(),
     }
 
     override fun renderUiStates(uiState: UpcomingMoviesUiState) {
+        when (uiState) {
+            is SuccessGettingMoviesList -> setScreenForShowMovies(uiState)
+            is ErrorGettingMoviesList -> setScreenForError(uiState.error)
+            is Default -> setDefaultAction()
+            is Loading -> setScreenForLoading(uiState.isLoading)
+        }
+    }
+
+    private fun setScreenForShowMovies(uiState: UpcomingMoviesUiState) {
         setScreenForLoading(uiState.isLoading)
         setScreenForError(uiState.error)
-        when (uiState) {
-            is SuccessGettingMoviesList -> setScreenForShowMovies(uiState.uiUpcomingMovies)
-            is ErrorGettingMoviesList -> setScreenForError(uiState.error)
+        uiState.upcomingMovies?.results?.let { list ->
+            upcomingMoviesAdapter.movies = list
+        }
+    }
+
+    private fun setScreenForError(error: String?) {
+        error?.let {
+            setScreenForLoading(false)
+            binding.evMoviesError.visibility = View.VISIBLE
+        } ?: run {
+            binding.evMoviesError.visibility = View.GONE
         }
     }
 
@@ -78,18 +97,8 @@ class UpcomingMoviesFragment : Fragment(),
         }
     }
 
-    private fun setScreenForError(error: String?) {
-        error?.let {
-            binding.evMoviesError.visibility = View.VISIBLE
-        } ?: run {
-            binding.evMoviesError.visibility = View.GONE
-        }
-    }
-
-    private fun setScreenForShowMovies(upcomingMovies: UiUpcomingMovies) {
-        upcomingMovies.results?.let { list ->
-            upcomingMoviesAdapter.movies = list
-        }
+    private fun setDefaultAction() {
+        TODO()
     }
 
     override fun onCreateView(

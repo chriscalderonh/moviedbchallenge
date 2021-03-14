@@ -13,5 +13,5 @@ class UpcomingMoviesRemoteImpl @Inject constructor(private val restApi: Upcoming
         restApi.getUpcomingMoviesList(API_KEY, page)
 
     override fun getMovieDetails(movieId: String): Single<MovieDetails> =
-        restApi.getMovieDetails(API_KEY, movieId)
+        restApi.getMovieDetails(movieId, API_KEY)
 }
