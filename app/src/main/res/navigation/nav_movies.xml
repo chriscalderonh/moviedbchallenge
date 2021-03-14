@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_movies"
+    app:startDestination="@id/upcomingMoviesFragment">
+
+    <fragment
+        android:id="@+id/upcomingMoviesFragment"
+        android:name="com.chriscalderonh.moviedbchallenge.upcomingmovies.ui.UpcomingMoviesFragment"
+        android:label="UpcomingMoviesFragment"
+        tools:layout="@layout/fragment_upcoming_movies">
+        <action
+            android:id="@+id/action_upcomingMoviesFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailsFragment"
+        android:name="com.chriscalderonh.moviedbchallenge.upcomingmovies.ui.MovieDetailsFragment"
+        android:label="@string/movie_information"
+        tools:layout="@layout/fragment_movie_details" >
+        <argument
+            android:name="movieId"
+            app:argType="string" />
+    </fragment>
+</navigation>
